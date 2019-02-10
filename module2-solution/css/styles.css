@@ -1,0 +1,108 @@
+* {
+	box-sizing: border-box;
+}
+body {
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+h1 {
+	text-align: center;
+	font-size: 1.75em;
+}
+.menuItem {
+	border: 1px solid black;
+	position: relative;
+	height: 150px;
+	margin: 10px 10px 10px 10px;
+	background-color: #808080;
+}
+.menuHeader {
+	position: absolute;
+	top: -1px;
+	right: -1px;
+	border: solid black 1px;
+	height: 35px;
+	text-align: center;
+	font-size: 1.25em;
+}
+.row {
+	width: 100%;
+}
+.textBox {
+	position: absolute;
+	top: 40px;
+	margin-left: 10px;
+	margin-right: 10px;
+	height: 100px;
+	overflow-y: hidden;
+}
+.textBox p {
+	padding-right: 16px;
+}
+.textBox:hover {
+	overflow-y: scroll;
+}
+.textBox:hover p {
+	padding-right: 0px;
+}
+@media (min-width: 992px) {
+	.col-lg-4 {
+		float: left;
+	}
+	.col-lg-4 {
+		width: 33%;
+	}
+}
+@media (min-width: 768px) and (max-width: 991px) {
+	.col-md-6, .col-md-12 {
+		float: left;
+	}
+	.col-md-6 {
+		width: 50%;
+	}
+	.col-md-12 {
+		width: 100%;
+	}
+}
+@media (min-width: 768px) {
+	#header {
+		opacity: 1;
+	}
+	#mobile_header {
+		height: 0;
+		opacity: 0;
+	}
+	.menuHeader {
+		width: 33%;
+	}
+}
+@media (max-width: 767px) {
+	.col-sm-12 {
+		float: left;
+	}
+	.col-sm-12 {
+		width: 100%;
+	}
+	#header {
+		opacity: 0;
+		height: 0;
+	}
+	#mobile_header {
+		opacity: 1;
+		text-align: left;
+		margin-left: 10px;
+		font-family: "Times New Roman", Times, serif;
+	}
+	.menuHeader {
+		left: -1px;
+	}
+}
+#chicken {
+	background-color: #ffff00
+}
+#beef {
+	background-color: #ff0000;
+}
+#sushi {
+	background-color: #00ffff;
+}
