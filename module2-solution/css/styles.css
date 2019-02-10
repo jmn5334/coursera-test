@@ -1,5 +1,7 @@
 * {
 	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 body {
 	font-size: 20px;
@@ -8,20 +10,18 @@ body {
 h1 {
 	text-align: center;
 	font-size: 1.75em;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 .menuItem {
 	border: 1px solid black;
-	position: relative;
-	height: 150px;
+	float: left;
 	margin: 10px 10px 10px 10px;
 	background-color: #808080;
 }
 .menuHeader {
-	position: absolute;
-	top: -1px;
-	right: -1px;
-	border: solid black 1px;
-	height: 35px;
+	border: 1px solid black;
+	float: right;
 	text-align: center;
 	font-size: 1.25em;
 }
@@ -29,15 +29,13 @@ h1 {
 	width: 100%;
 }
 .textBox {
-	position: absolute;
-	top: 40px;
-	margin-left: 10px;
-	margin-right: 10px;
-	height: 100px;
+	float: left;
+	height: 110px;
+	margin-bottom: 10px;
 	overflow-y: hidden;
 }
 .textBox p {
-	padding-right: 16px;
+	padding: 16px 16px 16px 16px;
 }
 .textBox:hover {
 	overflow-y: scroll;
@@ -65,15 +63,16 @@ h1 {
 	}
 }
 @media (min-width: 768px) {
-	#header {
-		opacity: 1;
-	}
 	#mobile_header {
-		height: 0;
-		opacity: 0;
+		display: none;
 	}
 	.menuHeader {
 		width: 33%;
+		border-right: none;
+		border-top: none;
+	}
+	.extraDescription {
+		display: none;
 	}
 }
 @media (max-width: 767px) {
@@ -84,17 +83,13 @@ h1 {
 		width: 100%;
 	}
 	#header {
-		opacity: 0;
-		height: 0;
-	}
-	#mobile_header {
-		opacity: 1;
-		text-align: left;
-		margin-left: 10px;
-		font-family: "Times New Roman", Times, serif;
+		display: none;
 	}
 	.menuHeader {
-		left: -1px;
+		width: 100%;
+		border-left: none;
+		border-right: none;
+		border-top: none;
 	}
 }
 #chicken {
@@ -105,4 +100,10 @@ h1 {
 }
 #sushi {
 	background-color: #00ffff;
+}
+#mobile_header {
+	text-align: left;
+	margin-left: 10px;
+	font-size: 1.5em;
+	font-family: "Times New Roman", Times, serif;
 }
