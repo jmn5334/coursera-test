@@ -87,8 +87,12 @@ WARNING!!! WARNING!!!
     bye: []
   };
   greetingArrays = names.reduce(function (accumulator, currentValue) {
-    accumulator.hello.push(helloSpeaker.speakSimple(currentValue));
-    accumulator.bye.push(byeSpeaker.speakSimple(currentValue));
+    var firstLetter = currentValue.charAt(0).toLowerCase();
+    if (firstLetter === "j") {
+      accumulator.bye.push(byeSpeaker.speakSimple(currentValue));
+    } else {
+      accumulator.hello.push(helloSpeaker.speakSimple(currentValue));
+    }
     return accumulator;
   }, {hello: [], bye: []});
   for(var i = 0; i < greetingArrays.hello.length; i++) {
