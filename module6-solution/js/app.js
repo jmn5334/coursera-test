@@ -9,6 +9,8 @@ function LunchCheckController ($scope) {
 	$scope.checkIfTooMuch = function () {
 		var lunchListToSplit = $scope.lunchList;
 		var message = "Please enter data first";
+		$scope.color = {"color":"red"};
+		$scope.border = {"border-color":"red"};
 		if(lunchListToSplit) {
 			var lunchList = lunchListToSplit.split(',');
 			var count = 0;
@@ -19,8 +21,12 @@ function LunchCheckController ($scope) {
 			}
 			if (count > 3) {
 				message = "Too much!";
+				$scope.color = {"color":"green"};
+				$scope.border = {"border-color":"green"};
 			} else if (count > 0) {
 				message = "Enjoy!";
+				$scope.color = {"color":"green"};
+				$scope.border = {"border-color":"green"};
 			} else {
 				message = "No valid data entered.";
 			}
@@ -28,5 +34,4 @@ function LunchCheckController ($scope) {
 		$scope.message = message;
 	}
 }
-
 })();
