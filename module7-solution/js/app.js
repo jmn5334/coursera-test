@@ -4,7 +4,8 @@
 angular.module('ShoppingListCheckOff', [])
 .controller('ToBuyController', ToBuyController)
 .controller('AlreadyBoughtController',AlreadyBoughtController)
-.service('ShoppingListCheckOffService',ShoppingListCheckOffService);
+.service('ShoppingListCheckOffService',ShoppingListCheckOffService)
+.filter('tripleDollar', TripleDollarFilter);
 
 function Item(itemName, quantity, pricePerItem) {
 	var item = this;
@@ -22,10 +23,20 @@ function ToBuyController (ShoppingListCheckOffService) {
 	}
 }
 
-AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
-function AlreadyBoughtController (ShoppingListCheckOffService) {
+AlreadyBoughtController.$inject = ['ShoppingListCheckOffService','tripleDollarFilter'];
+function AlreadyBoughtController (ShoppingListCheckOffService,tripleDollarFilter) {
 	var boughtList = this;
 	boughtList.items = ShoppingListCheckOffService.getItemsBought();
+	boughtList.calculateTotalPrice = function(item) {
+		return ShoppingListCheckOffService.calculateTotalPrice(item);
+	}
+}
+
+function TripleDollarFilter() {
+	return function (input) {
+		input = "$$$" + input;
+		return input;
+	}
 }
 
 function ShoppingListCheckOffService() {
@@ -45,7 +56,11 @@ function ShoppingListCheckOffService() {
 
 	// moves an item from the shopping list to bought
 	service.buyItem = function (itemIndex) {
+		// only move item if the quantity is defined
 		var item = itemsToBuy[itemIndex];
+		if(item.quantity < 1) {
+			return;
+		}
 		itemsToBuy.splice(itemIndex, 1);
 		itemsBought.push(item);
 	}
@@ -54,6 +69,9 @@ function ShoppingListCheckOffService() {
 	}
 	service.getItemsBought = function () {
 		return itemsBought;
+	}
+	service.calculateTotalPrice = function(item) {
+		return item.quantity * item.pricePerItem;
 	}
 }
 
