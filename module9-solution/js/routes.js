@@ -13,13 +13,13 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
   // *** Set up UI states ***
   $stateProvider
 
-  // Home view
+  // home view
   .state('home', {
     url: '/',
     templateUrl: 'templates/home.template.html'
   })
 
-  // Categories view
+  // categories view
   .state('categories', {
     url: '/categories',
     templateUrl: 'templates/categories.template.html',
@@ -27,6 +27,18 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     resolve: {
       categories: ['MenuDataService', function (MenuDataService) {
         return MenuDataService.getAllCategories();
+      }]
+    }
+  })
+
+  // items view
+  .state('items', {
+    url: '/items/{category}',
+    templateUrl: 'templates/items.template.html',
+    controller: 'ItemsController as ctrl',
+    resolve: {
+      items: ['$stateParams','MenuDataService', function ($stateParams, MenuDataService,) {
+        return MenuDataService.getItemsForCategory($stateParams.category);
       }]
     }
   });
