@@ -1,12 +1,28 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="MenuApp">
   <head>
-    <title>TODO</title>
+    <title>Assignment 9</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <link rel="stylesheet" href="styles/styles.css">
-    <script src="js/angular.min.js"></script>
   </head>
 <body>
+	<ui-view></ui-view>
+	<!-- Libraries -->
+	<script src="js/angular.min.js"></script>
+	<script src="js/angular-ui-router.min.js"></script>
+
+	<!-- Modules -->
+	<script src="js/menuapp.module.js"></script>
+	<script src="js/data.module.js"></script>
+
+	<!-- Routes -->
+	<script src="js/routes.js"></script>
+
+	<!-- Module artifacts -->
+	<script src="js/categories.component.js"></script>
+	<script src="js/categories.controller.js"></script>
+	<script src="js/items.component.js"></script>
+	<script src="js/menudata.service.js"></script>
 </body>
 </html>
