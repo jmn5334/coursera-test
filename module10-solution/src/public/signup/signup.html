@@ -43,7 +43,8 @@
         <input type="text" name="favmenuitem" placeholder="Favorite menu item"
           ng-model="reg.user.favmenuitem"
           required
-          minlength="1">
+          minlength="1"
+          menu-item-exist>
           <span
             ng-if="(regForm.favmenuitem.$error.minlength || regForm.favmenuitem.$error.required) && regForm.favmenuitem.$touched">
             Menu item must be at least 1 character long
@@ -51,7 +52,7 @@
           <br>
 
         <button
-          id="submit" ng-disabled="regForm.$invalid"
+          id="submit" ng-disabled="regForm.$invalid || regForm.$pending"
           ng-click="reg.submit()">Submit</button>
       </form>
     </fieldset>
