@@ -38,6 +38,15 @@ function MenuService($http, ApiPath) {
     return menuItem;
   };
 
+  service.doesMenuItemExist = function (shortName) {
+    return $http.get(ApiPath + '/menu_items/' + shortName + ".json")
+        .then(
+         function(response) {
+            return true;
+        }
+    );
+  }
+
 }
 
 

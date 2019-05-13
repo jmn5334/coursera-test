@@ -3,18 +3,13 @@
 
 angular.module('public').directive('menuItemExist', MenuItemExist);
 
-MenuItemExist.$inject = ['$http', '$q', 'ApiPath'];
-function MenuItemExist($http, $q, ApiPath) {
+MenuItemExist.$inject = ['$http', '$q', 'MenuService'];
+function MenuItemExist($http, $q, MenuService) {
     var ddo = {
         require: 'ngModel',
         link: function(scope, element, attrs, ngModel) {
             ngModel.$asyncValidators.menuItemExist = function(modelValue, viewValue) {
-                return $http.get(ApiPath + '/menu_items/' + viewValue + ".json")
-                    .then(
-                     function(response) {
-                        return true;
-                    }
-                );
+                return MenuService.doesMenuItemExist(viewValue);
             };
         }
     }
