@@ -37,6 +37,9 @@
 }
 /* END HOME PAGE */
 /* SIGNUP PAGE */
+#signup-link {
+  text-decoration: underline;
+}
 legend {
   color: #FFF;
 }

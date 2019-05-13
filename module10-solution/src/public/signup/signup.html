@@ -47,7 +47,11 @@
           menu-item-exist>
           <span
             ng-if="(regForm.favmenuitem.$error.minlength || regForm.favmenuitem.$error.required) && regForm.favmenuitem.$touched">
-            Menu item must be at least 1 character long
+            Menu item must be at least 1 character long.
+          </span>
+          <span
+            ng-if="(regForm.favmenuitem.$invalid || regForm.favmenuitem.$error.required) && regForm.favmenuitem.$touched">
+            No such menu number exists
           </span>
           <br>
 
@@ -56,4 +60,7 @@
           ng-click="reg.submit()">Submit</button>
       </form>
     </fieldset>
+    <div>
+      <span ng-if="reg.completed">Your information has been saved.</span>
+    </div>
 </div>

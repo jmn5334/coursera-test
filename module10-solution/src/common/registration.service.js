@@ -8,11 +8,12 @@ function RegistrationService() {
   var service = this;
   var user;
 
-  service.setRegistration = function (user) {
-    console.log("User set: ", user);
+  service.setRegistration = function (user_updated) {
+    user = user_updated;
+
   };
-  service.getRegistration = function (user) {
-    console.log("Getting user: ", user);
+  service.getRegistration = function () {
+    return user;
   };
 }
 
